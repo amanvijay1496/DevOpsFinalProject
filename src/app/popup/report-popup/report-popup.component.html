@@ -1,0 +1,67 @@
+<p-card
+  header="Types of Issues"
+  styleClass="ui-card-shadow card-margin"
+  [style]="{ margin: '10px' }"
+>
+  <p-header>
+    <!-- <img src="Card" src="assets/showcase/images/usercard.png" /> -->
+  </p-header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div>
+          <i class="fa fa-bug" aria-hidden="true"></i
+          ><span class="countFont">{{ report.typeCount.bugsCount }}</span>
+        </div>
+        <div><span class="countNameFont">Bug </span></div>
+      </div>
+      <div class="col-md-3">
+        <i class="fa fa-bug" aria-hidden="true"></i>
+        <span>Vulnerability </span>
+        <span>{{ report.typeCount.vulnerabilityCount }}</span>
+      </div>
+      <div class="col-md-3">
+        <i class="fa fa-bug" aria-hidden="true"></i>CodeSmell
+
+        <span>{{ report.typeCount.codeSmell }}</span>
+      </div>
+      <div class="col-md-3">
+        <i class="fa fa-bug" aria-hidden="true"></i>Security Hotspot
+        <span>{{ report.typeCount.securityHotspot }}</span>
+      </div>
+    </div>
+  </div>
+</p-card>
+<p-card
+  header="Severity"
+  styleClass="ui-card-shadow"
+  [style]="{ margin: '10px' }"
+>
+  <p-header>
+    <!-- <img src="Card" src="assets/showcase/images/usercard.png" /> -->
+  </p-header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        Blocker
+        <span>{{ report.severityCount.blockerCount }}</span>
+      </div>
+      <div class="col-md-2">
+        Critical
+        <span>{{ report.severityCount.criticalCount }}</span>
+      </div>
+      <div class="col-md-2">
+        Major
+        <span>{{ report.severityCount.majorCount }}</span>
+      </div>
+      <div class="col-md-2">
+        Minor
+        <span>{{ report.severityCount.minorCount }}</span>
+      </div>
+      <div class="col-md-2">
+        Info
+        <span>{{ report.severityCount.infoCount }}</span>
+      </div>
+    </div>
+  </div>
+</p-card>
