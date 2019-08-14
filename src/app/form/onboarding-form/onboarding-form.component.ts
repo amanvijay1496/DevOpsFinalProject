@@ -1,8 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { DialogService, MessageService } from "primeng/api";
-import { SelectItem } from "primeng/api";
-import { DynamicDialogRef } from "primeng/api";
-import { DynamicDialogConfig } from "primeng/api";
 import { ReportPopupComponent } from "src/app/Popup/report-popup/report-popup.component";
 import { OnBoardForm } from "src/app/OnBoardForm";
 import { ReportService } from "src/app/report.service";
@@ -17,37 +14,35 @@ import { SourceCode } from "src/app/sourceCode";
   styleUrls: ["./onboarding-form.component.scss"]
 })
 export class OnboardingFormComponent implements OnInit {
-  reportData: Report;
-  selectedCBReport: string;
+  private reportData: Report;
   // Dynamic Dependent DropDown
-  selectedAppType: AppType = new AppType(0, "Select");
-  selectedCodeBase: CodeBase = new CodeBase(0, 1, "Select", "Select");
-  apptypes: AppType[];
-  codebases: CodeBase[];
+  private selectedAppType: AppType = new AppType(0, "Select");
+  private selectedCodeBase: CodeBase = new CodeBase(0, 1, "Select", "Select");
+  private apptypes: AppType[];
+  private codebases: CodeBase[];
   // End of 1st Dropdown
   // 2nd DropDown
-  selectedSourceCode1: SourceCode = new SourceCode(0, "Select");
-  sourceCodes: SourceCode[];
+  private selectedSourceCode1: SourceCode = new SourceCode(0, "Select");
+  private sourceCodes: SourceCode[];
   // End of 2nd Dropdown
-  errorMsg: string;
-  //
-  minimumDate: Date;
+  // For Calendar Restriction to show previous dates
+  private minimumDate: Date;
   // Dropdown value for codebase
-  CodeBases: string[];
+  private CodeBases: string[];
   // Source Code DropDown Flag Value
-  gitFlag = false;
-  svnFlag = false;
-  tfsFlag = false;
-  cvsFlag = false;
+  private gitFlag = false;
+  private svnFlag = false;
+  private tfsFlag = false;
+  private cvsFlag = false;
 
-  onBoardForm: OnBoardForm = {
-    projectName: "",
-    projectId: "",
+  private onBoardForm: OnBoardForm = {
+    projectName: '',
+    projectId: '',
     jobName: null,
     relDate: null,
-    appName: "",
-    appType: "",
-    codeBase: ""
+    appName: '',
+    appType: '',
+    codeBase: ''
   };
   constructor(
     public dialogService: DialogService,
@@ -66,9 +61,9 @@ export class OnboardingFormComponent implements OnInit {
     // 2nd Dropdown
     this.sourceCodes = this.reportService.getSourceCode();
     this.onSelect2(this.selectedAppType.id);
-    console.log(this.sourceCodes);
   }
   /**
+   * Function to filter the appId to get the particular codebase to show dropdown
    * @author Team1
    * @param appTypeid
    */
@@ -78,6 +73,10 @@ export class OnboardingFormComponent implements OnInit {
       // tslint:disable-next-line: triple-equals
       .filter(item => item.appTypeid == appTypeid);
   }
+  /**
+   * Function to select the source code from the avalilable options based on the flag values
+   * @param sourceCode
+   */
   onSelect3(sourceCode) {
     if (sourceCode === "1") {
       this.gitFlag = true;
@@ -101,6 +100,9 @@ export class OnboardingFormComponent implements OnInit {
       this.tfsFlag = false;
     }
   }
+  /**
+   *  Function to show successfule message after form submition
+   */
   OnSubmit() {
     this.messageService.add({
       severity: "success",
@@ -108,8 +110,11 @@ export class OnboardingFormComponent implements OnInit {
       detail: "Thank You For Submission."
     });
   }
+  /**
+   * Function to display popup which has the report consisting of the issues faced by a particular codebase
+   * @param codeBase
+   */
   showPopUp(codeBase: string) {
-    console.log("i am");
     // Subscribe function
     this.reportService
       .getReport(this.selectedCodeBase.langValue)

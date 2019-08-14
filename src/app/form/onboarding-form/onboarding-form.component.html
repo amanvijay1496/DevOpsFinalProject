@@ -2,6 +2,7 @@
   <h1>OnBoarding Form</h1>
   <form #onBoardForm="ngForm" novalidate>
     <!-- Row No 1 -->
+     <!--Input field to add project name with checking its validations in the form-->
     <div class="row">
       <div class="col-md-2"><label>Project Name</label></div>
       <div class="col-md-4">
@@ -34,6 +35,7 @@
           >
         </div>
       </div>
+       <!--input field to add project ID in the form-->
       <div class="col-md-2"><label>Project Id</label></div>
       <div class="col-md-4">
         <input
@@ -61,7 +63,9 @@
         </div>
       </div>
     </div>
+     <!--End of Row 1 of the form-->
     <!-- Row No 2 -->
+    <!--Input field to add Job Name and checking its validations in the form-->
     <div class="row">
       <div class="col-md-2"><label>Job Name</label></div>
       <div class="col-md-4">
@@ -94,6 +98,7 @@
           >
         </div>
       </div>
+      <!--Field to choose release date from the displayed calender -->
       <div class="col-md-2"><label>Release Date</label></div>
       <div class="col-md-4 ui-fluid">
         <p-calendar
@@ -119,7 +124,9 @@
         </div>
       </div>
     </div>
+    <!--end of row 2-->
     <!-- Row No 3 -->
+    <!--input field to add Application name and checking its validations in the form-->
     <div class="row">
       <div class="col-md-2"><label>Application Name</label></div>
       <div class="col-md-4">
@@ -144,6 +151,7 @@
                 >
               </div>
       </div>
+      <!--dropdown box with the list to choose Application Type -->
       <div class="col-md-2"><label>AppTypes:</label></div>
       <div class="col-md-4">
         <select
@@ -162,7 +170,10 @@
         </select>
       </div>
     </div>
+    <!--End of row 3-->
     <!-- Row No 4 -->
+    <!--Dropdown box to choose a specific CodeBase from the list of available list-->
+    <!--It depends on the type of application choosed earlier-->
     <div class="row">
       <div class="col-md-2"><label>CodeBases:</label></div>
       <div class="col-md-4">
@@ -185,7 +196,9 @@
       <div class="col-md-2"></div>
       <div class="col-md-4"></div>
     </div>
+    <!--end of Row 4-->
     <!-- Row No 5 (Jenkins Credentials)-->
+     <!--Input field to add jenkins username-->
     <div class="row">
       <div class="col-md-2"><label>Jenkins Username</label></div>
       <div class="col-md-4">
@@ -214,6 +227,7 @@
       </div>
     </div>
     <!-- Row no 6 (Source Code Management) -->
+    <!--Dropdown box to select the required source Code Management-->
     <div class="row">
       <div class="col-md-2"><label>Source Code Management</label></div>
       <div class="col-md-4">
@@ -236,7 +250,11 @@
       <div class="col-md-2"></div>
       <div class="col-md-4"></div>
     </div>
+    <!--end of row 5(Jenkins Credentials)-->
     <!-- Temporary Row For Git-->
+     <!--If GIT is selected from the list then all of these will get displayed-->
+     <!--Git row's code begins here-->
+    <!-- Input field to add Git username and validations are also checked -->
     <div class="row" *ngIf="gitFlag">
         <div class="col-md-2"><label>Git Username</label></div>
         <div class="col-md-4">

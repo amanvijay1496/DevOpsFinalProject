@@ -9,13 +9,16 @@ import { Report } from 'src/app/Data/Report';
   templateUrl: './report-popup.component.html',
   styleUrls: ['./report-popup.component.scss']
 })
+/**
+   * @author Team1
+   * Popup Component which provides report related to particular language in Dynamic Popup
+   */
 export class ReportPopupComponent implements OnInit {
-  report:Report; 
+  private report:Report; 
   constructor(public ref: DynamicDialogRef, public config: DynamicDialogConfig) { }
 
   ngOnInit() {
     this.report = this.config.data.report;
-    console.log(this.report);
   }
 
 }
