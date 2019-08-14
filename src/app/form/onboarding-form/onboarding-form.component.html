@@ -1,6 +1,6 @@
 <div class="container">
   <h1>OnBoarding Form</h1>
-  <form #onBoardForm="ngForm" (ngSubmit)="OnSubmit()" novalidate>
+  <form #onBoardForm="ngForm" novalidate>
     <!-- Row No 1 -->
     <div class="row">
       <div class="col-md-2"><label>Project Name</label></div>
@@ -151,7 +151,7 @@
           name="appType"
           class="custom-select"
           id="inputGroupSelect01"
-          [(ngModel)]="selectedAppType1.id"
+          [(ngModel)]="selectedAppType.id"
           (change)="onSelect2($event.target.value)"
           required
         >
@@ -171,7 +171,7 @@
           class="custom-select"
           id="inputGroupSelect01"
           (change)="showPopUp($event.target.value)"
-          [(ngModel)]="selectedCodeBase1.langValue"
+          [(ngModel)]="selectedCodeBase.langValue"
           required
         >
           <option value="Select">--Select--</option>
@@ -224,6 +224,7 @@
             id="inputGroupSelect03"
             [(ngModel)]="selectedSourceCode1.id"
             (change)="onSelect3($event.target.value)"
+            
             required
           >
             <option value="0"  disabled >--Select--</option>
@@ -292,48 +293,176 @@
           </div>
       </div>
     <!-- End of Temporary Row (Git)-->
-     <!-- Temporary Row For CVS-->
+     <!-- Temporary Row For SVN-->
      <div class="row" *ngIf="svnFlag">
-        <div class="col-md-2">a</div>
-        <div class="col-md-4"></div>
-        <div class="col-md-2"></div>
-        <div class="col-md-4"></div>
+            <div class="col-md-2"><label>SVN Username</label></div>
+            <div class="col-md-4">
+              <input
+                #svnName="ngModel"
+                type="text"
+                pattern="^[A-Za-z0-9]{3,15}$"
+                required
+                class="form-control"
+                placeholder="SVN UserName"
+                name="svnName"
+                [(ngModel)]="onBoardForm.svnName"
+              />
+            </div>
+            <div class="col-md-2"><label>SVN Password</label></div>
+            <div class="col-md-4">
+              <input
+                #svnPassId="ngModel"
+                type="password"
+                required
+                class="form-control"
+                placeholder="Enter your git password"
+                name="svnPassword"
+                [(ngModel)]="onBoardForm.svnpassword"
+              />
+            </div>
       </div>
-      <div class="row" *ngIf="false">
-          <div class="col-md-2"></div>
-          <div class="col-md-4"></div>
-          <div class="col-md-2"></div>
-          <div class="col-md-4"></div>
+      <div class="row" *ngIf="svnFlag">
+          <div class="col-md-2"><label>SVN URL</label></div>
+            <div class="col-md-4">
+                <input
+                  #svnUrl="ngModel"
+                  type="text"
+                  pattern="^[A-Za-z0-9]{3,15}$"
+                  required
+                  class="form-control"
+                  placeholder="SVN URL"
+                  name="svnUrl"
+                  [(ngModel)]="onBoardForm.svnUrl"
+                />
+              </div>
+            <div class="col-md-2"><label>Local Module Directory</label></div>
+            <div class="col-md-4">
+                <input
+                  #svnModule="ngModel"
+                  type="text"
+                  pattern="^[A-Za-z0-9]{3,15}$"
+                  required
+                  class="form-control"
+                  placeholder="Local Module Directory"
+                  name="svnModule"
+                  [(ngModel)]="onBoardForm.svnModule"
+                />
+              </div>
         </div>
-      <!-- End of Temporary Row (CVS)-->
+      <!-- End of Temporary Row (SVN)-->
        <!-- Temporary Row For TFS-->
-    <div class="row" *ngIf="false">
-        <div class="col-md-2">a</div>
-        <div class="col-md-4"></div>
-        <div class="col-md-2"></div>
-        <div class="col-md-4"></div>
+    <div class="row" *ngIf="tfsFlag">
+        <div class="col-md-2"><label>TFS Username</label></div>
+            <div class="col-md-4">
+              <input
+                #tfsName="ngModel"
+                type="text"
+                pattern="^[A-Za-z0-9]{3,15}$"
+                required
+                class="form-control"
+                placeholder="TFS UserName"
+                name="tfsName"
+                [(ngModel)]="onBoardForm.tfsName"
+              />
+            </div>
+            <div class="col-md-2"><label>TFS Password</label></div>
+            <div class="col-md-4">
+              <input
+                #tfsPassId="ngModel"
+                type="password"
+                required
+                class="form-control"
+                placeholder="Enter your TFS password"
+                name="tfsPassword"
+                [(ngModel)]="onBoardForm.tfspassword"
+              />
+            </div>
       </div>
-      <div class="row" *ngIf="false">
-          <div class="col-md-2"></div>
-          <div class="col-md-4"></div>
-          <div class="col-md-2"></div>
-          <div class="col-md-4"></div>
+      <div class="row" *ngIf="tfsFlag">
+          <div class="col-md-2"><label>Collection URL</label></div>
+            <div class="col-md-4">
+                <input
+                  #tfsUrl="ngModel"
+                  type="text"
+                  pattern="^[A-Za-z0-9]{3,15}$"
+                  required
+                  class="form-control"
+                  placeholder="TFS URL"
+                  name="tfsUrl"
+                  [(ngModel)]="onBoardForm.tfsUrl"
+                />
+              </div>
+            <div class="col-md-2"><label>Project Path</label></div>
+            <div class="col-md-4">
+                <input
+                  #tfsPath="ngModel"
+                  type="text"
+                  pattern="^[A-Za-z0-9]{3,15}$"
+                  required
+                  class="form-control"
+                  placeholder="Project Path"
+                  name="tfsPath"
+                  [(ngModel)]="onBoardForm.tfsPath"
+                />
+              </div>
         </div>
       <!-- End of Temporary Row (TFS)-->
-       <!-- Temporary Row For SVN-->
-    <div class="row" *ngIf="false">
-        <div class="col-md-2">a</div>
-        <div class="col-md-4"></div>
-        <div class="col-md-2"></div>
-        <div class="col-md-4"></div>
+       <!-- Temporary Row For CVS-->
+    <div class="row" *ngIf="cvsFlag">
+      <div class="col-md-2"><label>CVS Root</label></div>
+      <div class="col-md-4">
+        <input
+          #cvsRoot="ngModel"
+          type="text"
+          pattern="^[A-Za-z0-9]{3,15}$"
+          required
+          class="form-control"
+          placeholder="CVS Root"
+          name="cvsRoot"
+          [(ngModel)]="onBoardForm.cvsRoot"
+        />
       </div>
-      <div class="row" *ngIf="false">
-          <div class="col-md-2"></div>
-          <div class="col-md-4"></div>
-          <div class="col-md-2"></div>
-          <div class="col-md-4"></div>
+      <div class="col-md-2"><label>CVS Password</label></div>
+      <div class="col-md-4">
+        <input
+          #cvsPassId="ngModel"
+          type="password"
+          required
+          class="form-control"
+          placeholder="Enter your TFS password"
+          name="cvsPassword"
+          [(ngModel)]="onBoardForm.cvspassword"
+        />
+      </div>
+      </div>
+      <div class="row" *ngIf="cvsFlag">
+        <div class="col-md-2"><label>Remote Name</label></div>
+        <div class="col-md-4">
+          <input
+            #cvsRemoteName="ngModel"
+            type="text"
+            pattern="^[A-Za-z0-9]{3,15}$"
+            required
+            class="form-control"
+            placeholder="CVS Remote Name"
+            name="cvsRemoteName"
+            [(ngModel)]="onBoardForm.cvsRemoteName"
+          />
         </div>
-      <!-- End of Temporary Row (SVN) -->
+        <div class="col-md-2"><label>Local Name</label></div>
+        <div class="col-md-4">
+          <input
+            #cvsLocalName="ngModel"
+            type="text"
+            required
+            class="form-control"
+            placeholder="Local Name"
+            name="cvsLocalName"
+            [(ngModel)]="onBoardForm.cvsLocalName"
+          />
+        </div>
+        </div>
+      <!-- End of Temporary Row (CVS) -->
     <!-- Row no 7 -->
     <div class="row">
       <div class="col-md-2"><label>Comments</label></div>
@@ -342,11 +471,11 @@
       </div>
     </div>
     <!-- Completed Form -->
-    <button [disabled]="onBoardForm.form.invalid" class="btn btn-primary">
+    <p-toast [style]="{marginTop: '80px'}"></p-toast>
+    <button class="btn btn-danger" (click)="onBoardForm.reset()">Reset</button>
+    <button (click)="OnSubmit(); onBoardForm.reset()" [disabled]="onBoardForm.form.invalid" class="btn btn-primary">
       Submit
     </button>
-    <button class="btn btn-danger" (click)="onBoardForm.reset()">Reset</button>
-    {{ successMsg }}
   </form>
 </div>
 

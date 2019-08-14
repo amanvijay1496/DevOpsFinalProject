@@ -15,6 +15,8 @@ import {DropdownModule} from 'primeng/dropdown';
 import {CalendarModule} from 'primeng/calendar';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {ToastModule} from 'primeng/toast';
+import { ReportService } from './report.service';
 
 
 @NgModule({
@@ -35,9 +37,10 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     CalendarModule,
     HttpClientModule,
     AngularFontAwesomeModule,
+    ToastModule,
     MDBBootstrapModule.forRoot()
   ],
-  providers: [DialogService, MessageService],
+  providers: [DialogService, MessageService, ReportService],
   entryComponents: [
     OnboardingFormComponent,
     ReportPopupComponent
